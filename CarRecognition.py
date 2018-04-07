@@ -14,35 +14,35 @@ from skimage import io, transform
 imageSize = 100
 
 def TransformData():        #load and transform data
-    images = os.listdir("datafile")
+    images = os.listdir("data")
     training_data = []
     training_labels = []
     for image in images:
         if image[-3:] == 'png':
-            transformed_image = transform.resize(io.imread("datafile" +'/' + image), (imageSize, imageSize, io.imread("datafile" +'/' + image).shape[2]))
+            transformed_image = transform.resize(io.imread("data" +'/' + image), (imageSize, imageSize, io.imread("data" +'/' + image).shape[2]))
             training_data.append(transformed_image)
             label_file = image[:-4] + '.txt'
-            with open("datafile" + '/' + label_file) as f:
+            with open("data" + '/' + label_file) as f:
                 content = f.readlines()
                 label = int(float(content[0]))
                 l = [0, 0]
                 l[label] = 1
                 training_labels.append(l)
         elif (image[-3:] == 'jpg'):
-            transformed_image = transform.resize(io.imread("datafile" +'/' + image), (imageSize, imageSize, io.imread("datafile" +'/' + image).shape[2]))
+            transformed_image = transform.resize(io.imread("data" +'/' + image), (imageSize, imageSize, io.imread("data" +'/' + image).shape[2]))
             training_data.append(transformed_image)
             label_file = image[:-4] + '.txt'
-            with open("datafile" + '/' + label_file) as f:
+            with open("data" + '/' + label_file) as f:
                 content = f.readlines()
                 label = int(float(content[0]))
                 l = [0, 0]
                 l[label] = 1
                 training_labels.append(l)
         elif (image[-4:] == 'jpeg'):
-            transformed_image = transform.resize(io.imread("datafile" +'/' + image), (imageSize, imageSize, io.imread("datafile" +'/' + image).shape[2]))
+            transformed_image = transform.resize(io.imread("data" +'/' + image), (imageSize, imageSize, io.imread("data" +'/' + image).shape[2]))
             training_data.append(transformed_image)
             label_file = image[:-5] + '.txt'
-            with open("datafile" + '/' + label_file) as f:
+            with open("data" + '/' + label_file) as f:
                 content = f.readlines()
                 label = int(float(content[0]))
                 l = [0, 0]
